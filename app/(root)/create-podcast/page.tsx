@@ -80,7 +80,7 @@ const CreatePodcast = () => {
         setIsSubmitting(false);
         throw new Error("Please generate audio and image")
       }
-      const podcast = await createPodcast({
+      await createPodcast({
         podcastTitle: data.podcastTitle,
         podcastDescription: data.podcastDescription,
         audioUrl,
@@ -101,7 +101,7 @@ const CreatePodcast = () => {
     } catch (error) {
       console.log("error creating podcast", error);
       toast({
-        title: "Error creating podcast",
+        title: "Generating please Wait...",
         variant: "destructive",
       });
       setIsSubmitting(false);

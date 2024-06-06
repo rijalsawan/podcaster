@@ -54,9 +54,8 @@ const useGeneratePodcast = ({
           })
 
     } catch (error) {
-        console.log("error generating podcast", error);
         toast({
-            title: "Error generating podcast",
+            title: "Error generating podcast please fill all fields",
             variant: "destructive"
           })
         setIsGenerating(false)
@@ -91,7 +90,7 @@ const GeneratePodcast = (props: GeneratePodcastProps) => {
           type="submit"
           className="text-16 bg-orange-1 py-4 font-bold text-1 "
         >
-          {isGenerating ? <>Generating</> : "Generate"}
+          {isGenerating ? "Generating" : "Generate"}
         </Button>
       </div>
       {props.audio && (

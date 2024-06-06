@@ -30,17 +30,21 @@ const GenerateThumbnail = ({
   const handleGenerateThumbnail = useAction(api.openai.generateThumbnailAction);
 
   const generateImage = async () => {
+    setIsImageLoading(true);
+    if (!imagePrompt) {
+      toast({
+        title: 'Please provide a prompt to generate image', variant: 'destructive'
+      })
+      return;
+    }
     try {
-      const response = await handleGenerateThumbnail({prompt: imagePrompt});
+    const response = await handleGenerateThumbnail({prompt: imagePrompt});
     const blob = new Blob([response], { type: "image/png" });
-    handleImage(blob, `thumbnail-${uuidv4()}.png`);
+    await handleImage(blob, `thumbnail-${uuidv4()}.png`);
     } catch (error) {
       console.log("error generating image", error);
-      toast({
-        title: 'Error Generating Image', variant: 'destructive'
-      })
+      
     }
-    
   };
 
   const handleImage = async (blob: Blob, fileName: string) => {
@@ -62,9 +66,6 @@ const GenerateThumbnail = ({
       })
     } catch (error) {
       console.log("error uploading image", error);
-      toast({
-        title: 'Error Generating Image', variant: 'destructive'
-      })
     }
   }
 
@@ -126,7 +127,7 @@ const GenerateThumbnail = ({
               type="submit"
               className="text-16 bg-orange-1 py-4 font-bold text-1"
             >
-              {isImageLoading ? <>Generating</> : "Generate"}
+              {isImageLoading ? "Generating" : "Generate"}
             </Button>
           </div>
         </div>
