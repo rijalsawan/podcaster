@@ -16,7 +16,9 @@ const Home = () => {
     <>
     <div className='mt-9 flex flex-col gap-9 md:overflow-hidden'>Home</div>
     <section className="flex flex-col gap-5">
+ <h1 className='text-20 font-bold text-white-1'>Create podcasts using AI. To get started click create podcast</h1>
       <h1 className='text-20 font-bold text-white-1'>Trending Podcasts</h1>
+     
       {TrendingPodcasts?.length === 0 && <div className='text-white-1 text-center text-20'>Create a Podcast to see here</div>}
       <div className='podcast_grid'>
       {TrendingPodcasts?.map(({_id, podcastTitle, podcastDescription, imageUrl}) => (
