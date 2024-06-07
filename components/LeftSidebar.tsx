@@ -38,7 +38,7 @@ const LeftSidebar = () => {
         <SignedOut>
             <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8">
                 <Button className='text-16 w-full bg-orange-1 font-extrabold' asChild>
-                    <Link href="/sign-in" >Sign In</Link>
+                    <Link href="/sign-in" >Sign In With Google</Link>
                 </Button>
             </div>    
         </SignedOut>
