@@ -101,7 +101,7 @@ const CreatePodcast = () => {
     } catch (error) {
       console.log("error creating podcast", error);
       toast({
-        title: "Generating please Wait...",
+        title: "Please fill all the fields and try again",
         variant: "destructive",
       });
       setIsSubmitting(false);

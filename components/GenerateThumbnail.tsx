@@ -30,14 +30,15 @@ const GenerateThumbnail = ({
   const handleGenerateThumbnail = useAction(api.openai.generateThumbnailAction);
 
   const generateImage = async () => {
-    setIsImageLoading(true);
     if (!imagePrompt) {
       toast({
         title: 'Please provide a prompt to generate image', variant: 'destructive'
       })
       return;
     }
+    setIsImageLoading(true);
     try {
+    
     const response = await handleGenerateThumbnail({prompt: imagePrompt});
     const blob = new Blob([response], { type: "image/png" });
     await handleImage(blob, `thumbnail-${uuidv4()}.png`);
@@ -124,7 +125,7 @@ const GenerateThumbnail = ({
           <div className="w-full max-w-[200px]">
             <Button
               onClick={generateImage}
-              type="submit"
+              type="button"
               className="text-16 bg-orange-1 py-4 font-bold text-1"
             >
               {isImageLoading ? "Generating" : "Generate"}
